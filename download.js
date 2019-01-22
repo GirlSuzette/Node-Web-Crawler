@@ -1,3 +1,4 @@
+// importar los mudulos
 
 const http = require('http')
 const fs = require('fs')
@@ -5,12 +6,14 @@ const path = require('path')
 const uuidv5 = require('uuid/v5');
 
 const downloadpage = async (URL) => {
+    // Generando el numero random para 
     const folder = await uuidv5('URL', uuidv5.URL)
-    fs.mkdirSync(`./${uuidv5('URL', uuidv5.URL)}`, { recursive: true }, (err) => {
+    // Crea la carpeta
+    fs.mkdir(`./${folder}`, { recursive: true }, (err) => {
         if (err) throw err;
     });
 
-
+    // Recibe una url & callback va a retornar  cuando se ejecute la funcion fetchPage
     const fetchPage = (linkUrl, callback) => {
         console.log("downloading" + URL)
         let content = "";
@@ -46,5 +49,5 @@ downloadpage(process.argv[2])
 
 
 // process.argv propiedad devuelve una matriz que contiene los argumentos de línea de comando que se pasaron cuando se lanzó el proceso Node.js.
-
+//node download.js http://www.google.com.mx
 
